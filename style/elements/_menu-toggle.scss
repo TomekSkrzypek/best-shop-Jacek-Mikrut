@@ -1,0 +1,63 @@
+input.menu-toggle-checkbox {
+  //zwiekszamy tym inputem specificity aby wygrac z reset.css
+  //input to nazwa elementu
+  //ale moznaby bylo tez .menu-toggle-checkbox.menu-toggle-checkbox
+  --width: 20px;
+  --thickness: 2px;
+  --gap: 3px;
+  --clickable-pseudo-margin: 3px;
+
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  border: solid transparent;
+  border-width: calc(var(--gap) + var(--thickness) + var(--clickable-pseudo-margin)) var(--clickable-pseudo-margin);
+  box-sizing: content-box;
+  //content-box po to zeby szerokosc i wysokosc (ta ponizej)
+  // sie stosowala do kontentu a nie calosci, tylko do srodkowej kreski
+  //nie do elementow before i after
+  background-clip: padding-box;
+  //SPRAWDZIC W DOKUMENTACJ
+
+
+  &:checked {
+    background-color: transparent;
+    transform: rotate(calc(-3 * 180deg));
+  }
+
+
+  //sam & powtarza to co na gorze
+  &,
+  &::before,
+  &::after {
+    width: var(--width);
+    height: var(--thickness);
+    background-color: $color-blue-2;
+    transition: 0.5s;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+  }
+
+  &::before {
+    bottom: calc(100% + var(--gap));
+  }
+
+  &:checked::before {
+    bottom: 50%;
+    transform: translateY(50%) rotate(45deg);
+  }
+
+  &::after {
+    top: calc(100% + var(--gap));
+  }
+
+  &:checked::after {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+}

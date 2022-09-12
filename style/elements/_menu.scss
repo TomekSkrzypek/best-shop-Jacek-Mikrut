@@ -1,0 +1,46 @@
+.menu {
+  --hide-gap: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--hide-gap);
+  //to robi wjazd na gore
+  z-index: -1;
+  //powoduje ze wjezdza pod bar z logiem
+  padding: 1.2rem 0;
+  transition: transform 0.75s;
+  //animacja na wjazd i wyjazd menu
+
+  box-shadow: var(--box-shadow);
+  //po to zeby moglo sie wsuwac w gore i jeszcze rodzicowi damy
+  // klase inna niz static czyli np position relative
+
+
+
+  .menu-toggle-checkbox:not(:checked) + & {
+    //w momencie kiedy nie jest zaznaczony (za ampersand podstawi sie menu)
+    transform: translateY(0);
+    //background-color: blue;
+  }
+
+  .menu-toggle-checkbox:checked + & {
+    transform: translateY(calc(100% + var(--hide-gap)));
+    //background-color: orange;
+  }
+
+
+  &__link {
+    display: inline-block;
+    //a to żeby sie załadował padding bo jak nie bedzie inline block
+    // to bedzie traktowalo jako element inline (chyba) aleb tekst
+    padding: 0.75rem 1rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 0.9375rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.272727em;
+    //bo skalowac sie powininem wzgledem wielkosci tekstu obecnego do font-size
+    color: $color-gray-3;
+  }
+}
