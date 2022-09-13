@@ -1,0 +1,10 @@
+.page-header-and-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @include M {
+    min-height: unset;
+
+  }
+}

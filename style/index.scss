@@ -1,12 +1,15 @@
 @import "variables/colors";
 @import "variables/breakpoints";
+
 @import "mixins/breakpoints";
+@import "mixins/resolutions";
+
 @import "generic/base";
 @import "generic/layout";
 
+@import "elements/page-header-and-hero";
 @import "elements/page-header";
 @import "elements/logo";
 @import 'elements/menu-toggle';
 @import "elements/menu";
-
-
+@import "elements/hero";

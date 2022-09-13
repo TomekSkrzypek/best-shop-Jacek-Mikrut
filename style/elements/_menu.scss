@@ -11,10 +11,12 @@
   transition: transform 0.75s;
   //animacja na wjazd i wyjazd menu
 
+
+  //stating context z index
+  background-color: $color-white-1;
   box-shadow: var(--box-shadow);
   //po to zeby moglo sie wsuwac w gore i jeszcze rodzicowi damy
   // klase inna niz static czyli np position relative
-
 
 
   .menu-toggle-checkbox:not(:checked) + & {
@@ -28,11 +30,50 @@
     //background-color: orange;
   }
 
+  @include M {
+    flex-basis: 35.8125rem;
+    align-self: stretch;
+
+    padding: 0;
+    //resetujemy padding zeby rozciagnac przycisk why us benefits itd.
+
+    transition: none;
+    //zeby sie nie wysuwalo samo menu
+    position: static;
+    z-index: unset;
+    //bo wczesniej bylo ustawione i dzieki tej komendzie wysuwamy to menu na gore
+    box-shadow: unset;
+    //zeby nam sie wczesniej ustawiony shadow nie nakladal na inny shadow
+
+    .menu-toggle-checkbox:not(:checked) + &,
+    .menu-toggle-checkbox:checked + & {
+      transform: translateY(0);
+      //background-color: orange;
+    }
+    //niezależnie czy jest menu checked czy nie checked dajemu menu translate Y = 0
+    //  przy oczywiscie wielkosci ekranu M
+
+  }
+  //style pod wielkosc ekranu pod M
+
+
+  &__list {
+    //ta klasa dodana jest do ul po to zeby ulozyc elementy w ul od lewej do prowaej
+    @include M {
+      //to wszystko zrobione tylko pod wielkosc ekranu M
+      display: flex;
+      flex-direction: row;
+      min-height: 100%;
+      //zeby rozciagnac linki
+
+      justify-content: space-between;
+    }
+  }
 
   &__link {
     display: inline-block;
     //a to żeby sie załadował padding bo jak nie bedzie inline block
-    // to bedzie traktowalo jako element inline (chyba) aleb tekst
+    // to bedzie traktowalo jako element inline (chyba) albo tekst
     padding: 0.75rem 1rem;
     font-size: 0.6875rem;
     font-weight: 700;
@@ -42,5 +83,29 @@
     letter-spacing: 0.272727em;
     //bo skalowac sie powininem wzgledem wielkosci tekstu obecnego do font-size
     color: $color-gray-3;
+    min-height: 100%;
+    //zeby rozciagnac linki
+
+    @include M {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0.75rem 0.75rem;
+      //zamiast 16 dajemy 12 px bo 4 px ma ta linia border niebieska
+      border-bottom: 0.25rem solid transparent;
+    }
+
+    &:hover {
+      color: $color-black-1;
+      //do wszystkich ekranow taki kolor napisu
+
+      @include M {
+        //border-bottom: 0.25rem solid $color-blue-1; kasujemy to bo jest juz
+        // wyzej i on pamieta i ten border caly czas tu jest
+        border-color: $color-blue-1;
+        //  do ekranu M podkreslenie, (juz nieaktualne bo skasowalismy wyzej te linijke)
+      }
+    }
+
   }
 }
+

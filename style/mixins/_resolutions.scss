@@ -1,0 +1,5 @@
+@mixin resolution2x{
+  @media (min-resolution: 2dppx){
+    @content;
+  }
+}

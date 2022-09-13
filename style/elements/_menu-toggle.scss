@@ -20,6 +20,11 @@ input.menu-toggle-checkbox {
   //SPRAWDZIC W DOKUMENTACJ
 
 
+  @include M{
+    display: none;
+    //to jest po to zeby hamburger znikal na wiekszym ekranie
+  }
+
   &:checked {
     background-color: transparent;
     transform: rotate(calc(-3 * 180deg));

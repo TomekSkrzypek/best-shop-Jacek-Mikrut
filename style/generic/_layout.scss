@@ -3,4 +3,11 @@
   //border: dashed 1px gray;
   margin: 0 auto;
   //wyśrodkowanie kontenera
+
+  padding: 0 1.875rem;
+  //bo duze elementow w tym akurat proijekcie ma taki wlasnie padding
+
+  @include M {
+    padding: 0 0.9375rem;
+  }
 }
