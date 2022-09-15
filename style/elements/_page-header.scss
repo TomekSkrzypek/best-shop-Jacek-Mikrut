@@ -1,9 +1,12 @@
 .page-header {
   --box-shadow: 0 3px 6px #{rgba($color-black-1, 16%)};
   //interpolacja i zmienna css-owa a nie scss zeby byla lokalna
-//position: relative;
-  position: sticky;
+  //position: relative;
+  position: fixed;
+  //zeby nam sie nie chowalo menu
   top: 0;
+  left: 0;
+  right: 0;
   background-color: $color-white-1;
   //to ze to jest biale powoduje ze chowane
   // menu pod ten element nie jest widoczne po schowaniu
@@ -36,6 +39,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: inherit;
 
     @include M {
       gap: 4.5rem;

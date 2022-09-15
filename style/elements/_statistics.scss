@@ -1,0 +1,122 @@
+.statistics {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+
+  > .container {
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+    //  bo pozostaly jest ustawiony w generic padding w sensie
+    @include M {
+      padding-top: 3.125rem;
+      padding-bottom: 3.125rem;
+    }
+  }
+
+  &__title {
+    font-size: 2.25rem;
+    line-height: 2.625rem;
+    margin-bottom: 1.5625rem;
+
+    @include M {
+      margin-bottom: 6.25rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include M {
+      max-width: 51rem;
+      margin: 0 auto;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    --cricle-diameter: 3.9rem;
+    position: relative;
+    padding: calc(var(--cricle-diameter) + 0.9rem) 0 0;
+    //padding: 4rem 0 0;
+    //  gora lewa-prawa doł
+
+    &::before {
+      content: '';
+      width: var(--cricle-diameter);
+      height: var(--cricle-diameter);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background-color: black;
+    }
+
+    &--daily-entries::before {
+      background-color: $color-red-3;
+    }
+
+    &--seen-products::before {
+      background-color: $color-blue-1;
+    }
+
+    &--added-posts::before {
+      background-color: $color-green-1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &--daily-entries::after {
+      background-image: url('../images/icon-person.svg');
+      width: 44px;
+      height: 52px;
+      top: 4px;
+      left: 50%;
+    }
+
+    &--seen-products::after {
+      background-image: url('../images/icon-eye.svg');
+      width: 65.42px;
+      height: 36.5px;
+      top: 14.25px;
+      left: calc(50% - 11px);
+    }
+
+    &--added-posts::after {
+      background-image: url('../images/icon-catalog.svg');
+      width: 52px;
+      height: 48px;
+      top: 6px;
+      left: calc(50% - 2px);
+    }
+  }
+
+  &__value,
+  &__description {
+    display: block;
+  }
+
+  &__value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.5rem;
+    letter-spacing: 0.298rem;
+  }
+
+  &__description {
+    margin-top: 1.5625rem;
+    font-size: 1.0625rem;
+    line-height: 1.25rem;
+    color: $color-gray-3;
+
+    @include M {
+      margin-top: 1.1875rem;
+    }
+  }
+
+}
